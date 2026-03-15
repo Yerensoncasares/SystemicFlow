@@ -1,0 +1,13 @@
+:root {
+  --primary: #00D1B2;  Principal:  títulos, bordes activos, iconos de salud/nodos.
+
+  --bg-main: #0D1117;  Fondo:   el lienzo oscuro para todo el sitio.
+
+  --bg-card: #161B22;  Superficie: para los <article> y bloques de proyectos.
+
+  --text-hi: #E6EDF3; Texto high: contenido principal (alta legibilidad.)
+
+  --text-lo: #8B949E; Texto low: notas al pie, copyright y detalles secundarios. 
+
+  --border: #30363d; bordes
+}
