@@ -3,130 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/index.css">
-  <script src="js/index.js"></script>
-  <title>Systemic Flow | Diseño de Sistemas</title>
+  <title>Systemic Flow | Ingeniería de Sistemas & Automatización</title>
+  <style>
+    :root {
+      --primary: #00D1B2;    /* Turquesa/Verde Salud Digital */
+      --bg-main: #0D1117;    /* Fondo Oscuro Pro */
+      --bg-card: #161B22;    /* Tarjetas */
+      --text-hi: #E6EDF3;    /* Texto Principal */
+      --text-lo: #8B949E;    /* Texto Secundario */
+      --border: #30363d;     /* Bordes sutiles */
+      --accent-blue: #00acc1; /* Azul para profundidad */
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      background-color: var(--bg-main);
+      color: var(--text-hi);
+      line-height: 1.6;
+    }
+
+    /* --- NAVEGACIÓN --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(13, 17, 23, 0.95);
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+    .logo span { color: var(--text-hi); font-weight: 300; }
+
+    /* --- HERO SECCIÓN (EL GANCHO) --- */
+    .hero {
+      padding: 100px 10%;
+      text-align: center;
+      background: radial-gradient(circle at top right, #00d1b215, transparent);
+    }
+
+    .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-hi); }
+    .hero .highlight { color: var(--primary); }
+    .hero p { color: var(--text-lo); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
+
+    .btn-main {
+      background: var(--primary);
+      color: var(--bg-main);
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-main:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* --- SECCIONES GENERALES --- */
+    section { padding: 80px 10%; border-bottom: 1px solid var(--border); }
+    h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 30px; }
+
+    /* --- GRID DE SERVICIOS / LOGIC NODES --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    article {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    article:hover { border-color: var(--primary); transform: translateY(-5px); }
+    article h3 { color: var(--primary); margin-top: 0; }
+    article p, article li { color: var(--text-lo); font-size: 0.95rem; }
+
+    /* --- SECCIÓN ESPECIALIZADA: CLÍNICAS --- */
+    .clinica-special {
+      background: linear-gradient(180deg, var(--bg-main) 0%, #00d1b205 100%);
+    }
+
+    .badge {
+      background: rgba(0, 209, 178, 0.1);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .roi-box {
+      display: flex;
+      justify-content: space-around;
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 30px;
+      border: 1px dashed var(--primary);
+    }
+
+    .stat { text-align: center; }
+    .stat div { font-size: 2.5rem; font-weight: bold; color: var(--primary); }
+    .stat span { color: var(--text-lo); font-size: 0.8rem; text-transform: uppercase; }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 60px 10%;
+      text-align: center;
+      background: #0a0d11;
+    }
+
+    .contact-links a {
+      color: var(--primary);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .roi-box { flex-direction: column; gap: 30px; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Systemic Flow</h1>
-    <p><strong>Diseño de Sistemas Híbridos y Automatización</strong></p>
-  </header>
-  <section>
-    <article>
-      <p>Soy desarrollador web junior, especializado en diseñar aplicaciones web interactivas y funcionales. Actualmente, perfecciono mis habilidades en n8n para automatizar procesos y conectar chatbots con diversas plataformas. Mi objetivo es ofrecer soluciones eficientes, escalables y con una experiencia de usuario sobresaliente. Busco integrar sistemas de forma inteligente para optimizar flujos de trabajo y potenciar la comunicación digital. Cada proyecto lo abordo con rigor técnico y pasión por la innovación. Estoy preparado para colaborar en iniciativas que exijan creatividad, precisión y un alto nivel de automatización. Agradezco la oportunidad de contribuir con mi perfil analítico y orientado a resultados. Mi meta es transformar ideas en realidades interactivas de alto impacto. Espero poder conversar sobre cómo mi enfoque puede aportar valor a su equipo.</p>
-      <h2>Acerca de mis habilidades:</h2>
-      <ol>
-        <li>
-       Dominio de tecnologías fundamentales para el desarrollo front-end: HTML, CSS y JavaScript, con especial énfasis en la creación de interfaces visualmente atractivas y experiencias de usuario dinámicas.
-     </li>
-        <li>
-       Capacidad comprobada para integrar y gestionar librerías externas de JavaScript, ampliando la funcionalidad y el alcance de las aplicaciones web.
-     </li>
-        <li>
-       Sólida base en programación orientada a objetos, adquirida durante mi experiencia práctica con el motor de videojuegos Godot, lo que me permite estructurar código de manera eficiente y escalable.
-     </li>
-        <li>
-       Enfoque destacado en el diseño visual y el detalle en CSS, mi principal fortaleza, asegurando que cada interfaz no solo sea funcional sino también estéticamente coherente y pulida.
-     </li>
-        <li>
-       Interés y afinidad natural por los flujos de automatización, área en la que actualmente me especializo mediante la plataforma n8n.
-     </li>
-        <li>
-       La similitud entre el sistema de nodos de n8n y el utilizado en Godot me permite abordar la automatización con una curva de aprendizaje acelerada y una sensación de familiaridad que optimiza los resultados.
-     </li>
-        <li>
-       Capacidad para conectar chatbots y aplicaciones web mediante flujos de trabajo automatizados, optimizando procesos y mejorando la interacción con los usuarios.
-     </li>
-        <li>
-       Visión integral que combina la precisión del desarrollo front-end con la lógica de automatización, permitiendo ofrecer soluciones completas y de alto valor.
-     </li>
-        <li>
-       Compromiso con la innovación y la mejora continua, aplicando las mejores prácticas de programación y diseño en cada proyecto.
-     </li>
-        <li>
-       Actitud proactiva y orientada a resultados, lista para colaborar en equipos multidisciplinarios y aportar soluciones técnicas creativas y eficaces.
-     </li>
-      </ol>
-     </article>
-    <article>
-      <h3>Objetivos profesionales:</h3>
-      <p>
-     Mis objetivos profesionales se centran en el diseño y desarrollo de sistemas híbridos innovadores que aporten soluciones tecnológicas tangibles al sector de la salud estética y odontológica bajo el enfoque de <strong>Logic Node</strong>:
-     </p>
-      <ol>
-        <li>
-         Diseñar arquitecturas híbridas que integren chatbots conversacionales con interfaces web interactivas, creando ecosistemas digitales cohesivos y funcionales.
-       </li>
-        <li>
-         Implementar chatbots inteligentes que automaticen la gestión de citas, resuelvan consultas frecuentes y cualifiquen leads, liberando tiempo valioso del personal sanitario.
-       </li>
-        <li>
-         Desarrollar web apps personalizadas que sirvan como escaparate visual de servicios, permitiendo a los pacientes explorar tratamientos, ver resultados y acceder a información detallada.
-       </li>
-        <li>
-         Sincronizar la comunicación entre chatbot y web app para ofrecer experiencias omnicanal fluidas, donde el paciente pueda iniciar una conversación en WhatsApp y continuarla en el sitio web sin fricciones.
-       </li>
-        <li>
-         Incorporar sistemas de recordatorio automático de citas vía SMS, email o WhatsApp, reduciendo las tasas de inasistencia y optimizando la agenda de la clínica.
-       </li>
-        <li>
-         Crear flujos de automatización en n8n que conecten el chatbot con bases de datos de pacientes y CRMs especializados, centralizando la información y facilitando el seguimiento.
-       </li>
-        <li>
-         Diseñar interfaces visuales atractivas y coherentes con la identidad de marca de la clínica, generando confianza y profesionalismo desde el primer contacto digital.
-       </li>
-        <li>
-         Implementar formularios inteligentes en la web app que se adapten según las respuestas del chatbot, personalizando la experiencia de cada usuario.
-       </li>
-        <li>
-         Desarrollar sistemas de análisis y reportes que permitan a los directivos de la clínica medir la efectividad de las interacciones digitales y tomar decisiones basadas en datos.
-       </li>
-        <li>
-         Contribuir al crecimiento del negocio mediante soluciones escalables que mejoren la experiencia del paciente, automaticen procesos administrativos y aumenten la conversión de consultas en tratamientos.
-       </li>
-     </ol>
-     <p>
-       Mi pasión por el diseño visual combinada con mi afinidad por los sistemas de automatización me posiciona como el perfil ideal para materializar esta visión tecnológica en el sector clínico.
-      </p>
-    </article>
-    <article>
-      <h2>Sistemas en Desarrollo</h2>
-      <div>
-        <h3>Acelerador de Eficiencia Clínica (MVP)</h3>
-        <p>Sistema híbrido que combina un chatbot de WhatsApp con una aplicación web de gestión. Diseñado específicamente para optimizar la triada: Paciente - Administración - Especialista.</p>
-        <ul>
-          <li>Tecnologías: JavaScript, n8n, Web Apps.</li>
-          <li>Estado: En fase de optimización de flujos de automatización.</li>
-          </ul>
-      </div>
-    </article>
-    <article>
-      <h2>Metodología de Trabajo</h2>
-      <ol>
-        <li><strong>Diagnóstico de Flujo:</strong> Analizo cómo llegan tus pacientes y dónde pierde tiempo tu personal.</li>
-        <li><strong>Arquitectura del Sistema:</strong> Diseño el nodo lógico (Logic Node) que conectará tu web con tus chats.</li>
-        <li><strong>Implementación Híbrida:</strong> Desarrollo la interfaz y automatizo las respuestas.</li>
-        <li><strong>Optimización Continua:</strong> Ajusto el sistema basado en los datos reales de la clínica.</li>
-      </ol>
-     </article>
+
+  <nav>
+    <div class="logo">SYSTEMIC <span>FLOW</span></div>
+    <div class="nav-links">
+      <a href="#soluciones" style="color: var(--text-lo); text-decoration: none; margin-right: 20px;">Soluciones</a>
+      <a href="mailto:casaresyerenson@gmail.com" class="btn-main" style="padding: 8px 20px;">Contacto</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <span class="badge">Sistemas Híbridos & Automatización</span>
+    <h1>Diseño de Sistemas que <span class="highlight">Aceleran su Crecimiento.</span></h1>
+    <p>Ingeniería aplicada a la optimización de flujos de trabajo. Conecto interfaces interactivas con inteligencia operativa para transformar consultas en resultados.</p>
+    <a href="#clinicas" class="btn-main">Ver Solución para Clínicas</a>
   </section>
-  <footer>
-    <h2>¿Listo para digitalizar tu clínica?</h2>
-    <p>Si buscas optimizar tus procesos con un enfoque de ingeniería y sistemas híbridos, hablemos.</p>
-    <ul>
-      <li>Email:<a href="mailto:casaresyerenson@gmail.com">Enviar correo</a>
-      </li>
-      <li>WhatsApp:<a href="https://wa.me/584123600285" target="_blank">Contactar por WhatsApp</a>
-      </li>
-      <li>Ubicación: Miranda, Venezuela (Disponible para proyectos remotos)
-      </li>
-      <li>LinkedIn / GitHub: [Tus enlaces]</li>
-      <p>
-        <small>© 2026 Systemic Flow. Todos los derechos reservados.
-        </small>
-      </p>
+
+  <section id="sobre-mi">
+    <h2>Perfil Analítico</h2>
+    <div class="grid">
+      <article>
+        <h3>Logic Node Approach</h3>
+        <p>Mi metodología se basa en nodos lógicos: cada interacción es un punto de datos que debe ser optimizado. Uso n8n y JavaScript para que la tecnología trabaje para usted, no al revés.</p>
+      </article>
+      <article>
+        <h3>Habilidades Core</h3>
+        <ul style="padding-left: 20px;">
+          <li>Arquitectura Frontend (HTML/CSS/JS)</li>
+          <li>Automatización de Procesos con n8n</li>
+          <li>Integración de Chatbots Inteligentes</li>
+          <li>Sistemas de Gestión para Salud</li>
         </ul>
-      </footer>
+      </article>
+    </div>
+  </section>
+
+  <section id="clinicas" class="clinica-special">
+    <span class="badge">Especialización: Sector Salud</span>
+    <h2>Acelerador de Eficiencia Clínica</h2>
+    <p>Un sistema diseñado para directores médicos que buscan eliminar el caos administrativo.</p>
+    
+    <div class="grid">
+      <article>
+        <h3>01. Anamnesis Digital</h3>
+        <p>El chatbot recolecta antecedentes médicos 24/7. El paciente llega al consultorio con el 50% de la consulta ya procesada.</p>
+      </article>
+      <article>
+        <h3>02. Semáforo de Riesgo</h3>
+        <p>Panel visual que prioriza pacientes por urgencia o condición médica mediante alertas automáticas.</p>
+      </article>
+      <article>
+        <h3>03. Rescate de No-Shows</h3>
+        <p>Automatización de recordatorios y confirmación de presupuesto para asegurar la rentabilidad de su agenda.</p>
+      </article>
+    </div>
+
+    <div class="roi-box">
+      <div class="stat">
+        <div>+25%</div>
+        <span>Asistencia Confirmada</span>
+      </div>
+      <div class="stat">
+        <div>15h</div>
+        <span>Ahorro Admin Mensual</span>
+      </div>
+      <div class="stat">
+        <div>ROI</div>
+        <span>Verificado en 30 días</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo trabajamos</h2>
+    <div class="grid">
+      <article>
+        <strong>1. Diagnóstico:</strong> Analizamos dónde pierde tiempo su personal.
+      </article>
+      <article>
+        <strong>2. Implementación:</strong> Desplegamos su ecosistema digital en 72h.
+      </article>
+      <article>
+        <strong>3. Garantía:</strong> Si el sistema no rinde, optimizamos sin costo.
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <h2>¿Listo para optimizar su flujo?</h2>
+    <div class="contact-links">
+      <a href="https://wa.me/584123600285">WhatsApp</a>
+      <a href="mailto:casaresyerenson@gmail.com">Email</a>
+    </div>
+    <p style="margin-top: 30px; color: var(--text-lo);">
+      <small>© 2026 Systemic Flow | Miranda, Venezuela</small>
+    </p>
+  </footer>
+
 </body>
 </html>
