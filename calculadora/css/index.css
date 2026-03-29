@@ -1,0 +1,136 @@
+:root {
+  --primary: #00D1B2;    /* Verde médico/nodos */
+  --bg-main: #0D1117;    /* Fondo lienzo */
+  --bg-card: #161B22;    /* Cuerpo calculadora */
+  --screen-bg: #010409;  /* Pantalla ultra oscura */
+  --btn-num: #21262d;    /* Teclas numéricas */
+  --btn-func: #30363d;   /* Teclas de función */
+  --text-hi: #E6EDF3;    /* Texto principal */
+  --text-lo: #8B949E;    /* Detalles/Labels */
+  --border: #30363d;     /* Bordes sutiles */
+}
+
+body {
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cuerpo de la Calculadora (Carcasa) */
+.calculator-case {
+  background: var(--bg-card);
+  width: 340px;
+  padding: 35px 25px;
+  border-radius: 20px; /* Bordes menos redondeados para verse más técnica */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Decoración superior (Efecto Logic Node) */
+.calculator-case::before {
+  content: "LOGIC NODE SYSTEM";
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  font-size: 0.6rem;
+  color: var(--primary);
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* Pantalla */
+.screen-container {
+  background: var(--screen-bg);
+  padding: 20px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+}
+
+#display {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  text-align: right;
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  text-shadow: 0 0 10px rgba(0, 209, 178, 0.3);
+}
+
+/* Teclado */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  height: 55px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text-hi);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--btn-num);
+}
+
+/* Efectos de Hover y Click */
+button:hover {
+  border-color: var(--primary);
+  background: #2b3139;
+}
+
+button:active {
+  transform: scale(0.95);
+  background: var(--primary);
+  color: var(--bg-main);
+}
+
+/* Clases específicas */
+.btn-func {
+  background: var(--btn-func);
+  color: var(--primary);
+}
+
+.btn-clear {
+  background: rgba(153, 27, 27, 0.2);
+  color: #ff6b6b;
+  border-color: #991b1b;
+}
+
+.btn-clear:hover {
+  background: #991b1b;
+  color: white;
+}
+
+.btn-equal {
+  background: var(--primary);
+  color: var(--bg-main);
+  grid-column: span 2;
+  font-size: 1.2rem;
+}
+
+.btn-number0 {
+  grid-column: span 2;
+}
+
+/* Label inferior */
+.label {
+  text-align: right;
+  color: var(--text-lo);
+  font-size: 0.6rem;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
