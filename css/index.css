@@ -7,7 +7,6 @@
       --border: #30363d;     /* Bordes sutiles */
       --accent-blue: #00acc1; /* Azul para profundidad */
     }
-
     * { box-sizing: border-box; }
 
     body {
@@ -128,3 +127,19 @@
       .hero h1 { font-size: 2rem; }
       .roi-box { flex-direction: column; gap: 30px; }
     }
+    .terminal-link {
+  color: var(--text-lo);
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+    .terminal-link:hover {
+  opacity: 1;
+  color: var(--primary);
+  text-shadow: 0 0 8px var(--primary);
+}
