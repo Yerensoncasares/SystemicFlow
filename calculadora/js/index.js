@@ -1,16 +1,13 @@
 // --- LOGIC NODE SIMULATOR ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleccionar todos los inputs
     const inputs = document.querySelectorAll('input[type="number"]');
     
-    // Escuchar cambios en cualquier input
     inputs.forEach(input => {
         input.addEventListener('input', calculateImpact);
     });
 
     function calculateImpact() {
-        // 1. Obtener valores de los inputs
         const ltv = parseFloat(document.getElementById('val_ltv').value) || 0;
         const currentSales = parseFloat(document.getElementById('current_sales').value) || 0;
         const percImprovement = (parseFloat(document.getElementById('perc_improvement').value) || 0) / 100;
@@ -18,75 +15,77 @@ document.addEventListener('DOMContentLoaded', () => {
         const percAutomation = (parseFloat(document.getElementById('perc_automation').value) || 0) / 100;
         const projectCost = parseFloat(document.getElementById('project_cost').value) || 0;
 
-        // 2. Cálculos de Negocio
-        // Nuevos ingresos mensuales por rescate de leads
+        // 1. Cálculos Financieros
         const monthlyNewRev = ltv * currentSales * percImprovement;
-        
-        // Ahorro operativo (tiempo de asistente recuperado)
         const monthlySavings = payroll * percAutomation;
-        
-        // Impacto Total Mensual
         const totalMonthlyImpact = monthlyNewRev + monthlySavings;
-        
-        // Beneficio Neto Anual (Impacto x 12)
         const annualImpact = totalMonthlyImpact * 12;
 
-        // Punto de Equilibrio (en cuántos meses se paga la inversión)
+        // 2. Cálculo de Horas Reales (Basado en una jornada estándar de 160h/mes)
+        // Este valor ahora es totalmente dinámico
+        const yearlyHoursSaved = Math.round((160 * percAutomation) * 12);
+
         let breakEvenMonths = 0;
         if (totalMonthlyImpact > 0) {
             breakEvenMonths = projectCost / totalMonthlyImpact;
         }
 
-        // 3. Actualizar la Interfaz (DOM)
-        updateDisplay(totalMonthlyImpact, annualImpact, breakEvenMonths);
+        updateDisplay(totalMonthlyImpact, annualImpact, breakEvenMonths, yearlyHoursSaved);
     }
 
-    function updateDisplay(monthly, annual, breakEven) {
-        // Formateador de moneda
+    function updateDisplay(monthly, annual, breakEven, hours) {
         const formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            maximumFractionDigits: 0
+            style: 'currency', currency: 'USD', maximumFractionDigits: 0
         });
 
-        // Actualizar números principales
+        // Actualizar cifras principales
         document.getElementById('roi_main').textContent = formatter.format(monthly);
         document.getElementById('annual_net').textContent = formatter.format(annual);
 
-        // Actualizar Punto de Equilibrio (Días o Meses)
+        // ACTUALIZACIÓN DINÁMICA DE HORAS
+        const hoursElement = document.getElementById('hours_saved');
+        if(hoursElement) {
+            hoursElement.textContent = `+${hours} Horas/Año`;
+        }
+
+        // Actualizar Badge de Punto de Equilibrio
         const breakEvenText = document.getElementById('break_even_text');
         if (breakEven === 0) {
-            breakEvenText.textContent = "Esperando datos...";
-        } else if (breakEven < 1) {
-            const days = Math.ceil(breakEven * 30);
-            breakEvenText.textContent = `Se paga solo en ${days} días`;
+            breakEvenText.textContent = "Esperando parámetros...";
         } else {
-            breakEvenText.textContent = `Se paga solo en ${breakEven.toFixed(1)} meses`;
+            breakEvenText.textContent = breakEven < 1 
+                ? `Punto de equilibrio: ${Math.ceil(breakEven * 30)} días` 
+                : `Punto de equilibrio: ${breakEven.toFixed(1)} meses`;
         }
 
-        // Actualizar el Pitch de venta dinámicamente
-        const pitchSpan = document.querySelector('.focus-text');
-        if (breakEven > 0) {
-            pitchSpan.textContent = breakEven < 1 
-                ? "menos de un mes" 
-                : `${breakEven.toFixed(1)} meses`;
+        // ARGUMENTO DE VENTA DINÁMICO (Pitch)
+        const pitchText = document.getElementById('pitch_text');
+        let argument = "";
+
+        if (breakEven <= 0) {
+            argument = "Ingrese los datos de su clínica para generar un análisis de retorno personalizado.";
+        } else if (breakEven <= 1) {
+            // Caso de éxito rotundo
+            argument = `Doctor, este sistema es un activo que se paga solo en <span class="focus-text">menos de un mes</span> rescatando pacientes que hoy pierde por falta de respuesta inmediata.`;
+        } else if (breakEven <= 6) {
+            // Retorno a mediano plazo
+            argument = `Doctor, con un retorno de inversión en <span class="focus-text">${breakEven.toFixed(1)} meses</span>, el sistema se autofinancia mientras recuperamos ${hours} horas de su personal para atención directa.`;
+        } else {
+            // Enfoque en eficiencia si el ROI es lento
+            argument = `Doctor, el valor principal aquí son las <span class="focus-text">${hours} horas anuales</span> de carga administrativa que eliminamos, permitiendo que su clínica escale sin aumentar la nómina.`;
         }
+
+        pitchText.innerHTML = `"${argument}"`;
     }
 
-    // Ejecutar cálculo inicial al cargar
     calculateImpact();
 });
-// Lógica del Modal de Ayuda
+
+// Lógica del Modal (Se mantiene igual)
 const modal = document.getElementById('help-modal');
 const btnOpen = document.getElementById('open-help');
 const btnClose = document.getElementById('close-help');
 
 btnOpen.onclick = () => modal.style.display = 'flex';
 btnClose.onclick = () => modal.style.display = 'none';
-
-// Cerrar si hacen clic fuera del cuadro
-window.onclick = (event) => {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
+window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; }
