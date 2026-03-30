@@ -16,37 +16,38 @@
             </div>
             <h1 class="main-title">IMPACTO <span class="highlight">CLÍNICO</span></h1>
         </header>
-        <button id="open-help" class="help-btn">
-    <span class="icon"></span> ¿Cómo funciona el cálculo?
-</button>
 
-<div id="help-modal" class="modal-overlay">
-    <div class="modal-content">
-        <button id="close-help" class="close-btn">&times;</button>
-        <h2 class="section-label">Guía de Simulación Clínica</h2>
-        <div class="modal-body">
-            <p>Este simulador utiliza tres variables críticas para proyectar su retorno:</p>
-            <ul>
-                <li><strong>Rescate Digital:</strong> Es el % de pacientes que hoy no agendan porque su secretaria está ocupada o fuera de horario. El sistema n8n los atiende al instante.</li>
-                <li><strong>Eficiencia Operativa:</strong> Calculamos el costo de las horas que su asistente gasta en tareas repetitivas que ahora se automatizan.</li>
-                <li><strong>Punto de Equilibrio:</strong> El momento exacto donde la ganancia generada cubre la inversión inicial del software.</li>
-            </ul>
+        <div class="help-container">
+            <button id="open-help" class="help-btn">
+                <span class="icon">?</span> ¿Cómo funciona el cálculo?
+            </button>
         </div>
-    </div>
-</div>
+
+        <div id="help-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button id="close-help" class="close-btn">&times;</button>
+                <h2 class="section-label">Guía de Simulación Clínica</h2>
+                <div class="modal-body">
+                    <p>Este simulador analiza la viabilidad financiera de automatizar su clínica mediante <strong>Logic Nodes (n8n + WhatsApp)</strong>:</p>
+                    <ul>
+                        <li><strong>Rescate Digital:</strong> Ingresos proyectados por pacientes que el sistema agenda automáticamente fuera de horario o cuando su personal está ocupado.</li>
+                        <li><strong>Eficiencia Operativa:</strong> Calculamos el ahorro real basándonos en una jornada laboral estándar (160h/mes). Al automatizar tareas, recuperamos tiempo de alto costo.</li>
+                        <li><strong>Punto de Equilibrio:</strong> El momento exacto donde la rentabilidad acumulada cubre el 100% de la inversión inicial.</li>
+                    </ul>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">
+                    <p style="font-size: 0.8rem; color: var(--text-lo);"><strong>Cálculo de horas:</strong> Se basa en (160 horas × % de automatización) × 12 meses.</p>
+                </div>
+            </div>
+        </div>
 
         <div class="simulator-grid">
-            
             <section class="input-panel">
-                
                 <div class="input-group-card">
                     <h2 class="section-label">01. Parámetros de la Clínica</h2>
-                    
                     <div class="field-full">
                         <label for="val_ltv">Valor promedio por tratamiento ($)</label>
                         <input type="number" id="val_ltv" value="180">
                     </div>
-
                     <div class="field-split">
                         <div class="field">
                             <label for="current_sales">Pacientes/mes</label>
@@ -61,12 +62,10 @@
 
                 <div class="input-group-card">
                     <h2 class="section-label">02. Optimización Administrativa</h2>
-                    
                     <div class="field-full">
                         <label for="payroll">Nómina mensual asistente ($)</label>
                         <input type="number" id="payroll" value="400">
                     </div>
-                    
                     <div class="field-full">
                         <label for="perc_automation">% Tiempo recuperado (n8n)</label>
                         <input type="number" id="perc_automation" value="35">
@@ -80,35 +79,33 @@
             </section>
 
             <section class="output-panel">
-                
                 <div class="main-result-card">
                     <div class="result-header">
                         <p class="result-label">Impacto Financiero Mensual</p>
-                        <div id="roi_main" class="big-number">$1,220</div>
+                        <div id="roi_main" class="big-number">$0</div>
                         <div class="badge-status">
-                            <span id="break_even_text">Punto de equilibrio: 15 días</span>
+                            <span id="break_even_text">Calculando...</span>
                         </div>
                     </div>
 
                     <div class="secondary-results">
                         <div class="result-box">
                             <p class="mini-label">Impacto Anual Proyectado</p>
-                            <p id="annual_net" class="medium-number">$14,640</p>
+                            <p id="annual_net" class="medium-number">$0</p>
                         </div>
                         <div class="result-box featured">
                             <p class="mini-label">Eficiencia Operativa</p>
-                            <p class="medium-number">+180 Horas/Año</p>
+                            <p id="hours_saved" class="medium-number">+0 Horas/Año</p>
                         </div>
                     </div>
                 </div>
 
                 <footer class="pitch-container">
                     <blockquote id="pitch_text">
-                        "Doctor, este sistema no es un costo. Es un activo que se paga solo en <span class="focus-text">menos de un mes</span> rescatando pacientes que hoy pierde por falta de respuesta inmediata."
+                        "Ingrese los datos de su clínica para generar un análisis de retorno personalizado."
                     </blockquote>
                 </footer>
             </section>
-
         </div>
     </main>
 
